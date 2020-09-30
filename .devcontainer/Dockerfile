@@ -35,7 +35,7 @@ RUN cd ${TMP_WORK_DIR} \
 
 # VtkMesh
 RUN cd ${TMP_WORK_DIR} \
-    && git clone https://793f656abb6a902df1ea83b460b3af35eaf06f59:x-oauth-basic@github.com/kuj1ra1/VtkMesh.git \
+    && git clone https://github.com/sKujirai/VtkMesh.git \
     && cd ${TMP_WORK_DIR}/VtkMesh \
     && g++ -std=c++17 -o vtkmeshw.o -c detail/write_vtk_impl.cpp \
     && ar r libmeshvtkw.a vtkmeshw.o \
