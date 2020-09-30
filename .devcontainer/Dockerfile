@@ -3,9 +3,9 @@ ARG VARIANT="buster"
 FROM mcr.microsoft.com/vscode/devcontainers/cpp:0-${VARIANT}
 
 # Environmental variables
-ARG REMOTE_USER
-ARG WORK_DIR
-ARG EIGEN_VERSION
+ARG REMOTE_USER="vscode"
+ARG WORK_DIR="/work"
+ARG EIGEN_VERSION=3.3.7
 ARG TMP_WORK_DIR="/tmp_work"
 
 # Avoid warnings by switching to noninteractive
