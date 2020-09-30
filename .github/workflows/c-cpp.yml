@@ -1,0 +1,40 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: configure
+      env:
+        TMP_WORK_DIR: "tmp_dir"
+      run: |
+        cd ${TMP_WORK_DIR}
+        git clone https://github.com/eigenteam/eigen-git-mirror.git
+        cd eigen-git-mirror
+        git checkout 3.3.7
+        cd ../../
+        sudo mv ${TMP_WORK_DIR}/eigen-git-mirror /opt/
+        sudo ln -s /opt/eigen-git-mirror/Eigen/ /usr/local/include/Eigen
+        sudo ln -s /opt/eigen-git-mirror/unsupported/ /usr/local/include/unsupported
+        cd ${TMP_WORK_DIR}
+        git clone https://793f656abb6a902df1ea83b460b3af35eaf06f59:x-oauth-basic@github.com/kuj1ra1/VtkMesh.git
+        cd ${TMP_WORK_DIR}/VtkMesh
+        g++ -std=c++17 -o vtkmeshw.o -c detail/write_vtk_impl.cpp \
+        ar r libmeshvtkw.a vtkmeshw.o
+        sudo mkdir /opt/VtkMesh
+        sudo mv ${TMP_WORK_DIR}/VtkMesh /opt/VtkMesh/
+    - name: make
+      run: make
+    - name: execute_debug
+      run: ./pf_martensite_dev
+    - name: execute_release
+      run: ./pf_martensite_prod
