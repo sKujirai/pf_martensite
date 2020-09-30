@@ -17,6 +17,7 @@ jobs:
       env:
         TMP_WORK_DIR: "tmp_dir"
       run: |
+        mkdir ${TMP_WORK_DIR}
         cd ${TMP_WORK_DIR}
         git clone https://github.com/eigenteam/eigen-git-mirror.git
         cd eigen-git-mirror
