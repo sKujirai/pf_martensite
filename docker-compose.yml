@@ -1,0 +1,17 @@
+version: '3.3'
+
+services:
+  cpp:
+    build:
+      context: .devcontainer/
+      args:
+        - REMOTE_USER=vscode
+        - WORK_DIR=${WORK_DIR}
+        - EIGEN_VERSION=${EIGEN_VERSION}
+    volumes:
+      - .:${WORK_DIR}
+    tty: true
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp:unconfined

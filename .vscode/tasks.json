@@ -1,0 +1,15 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Main",
+            "type": "shell",
+            "command": "g++ -g -O0 -Wall -Wextra -std=c++17 -I /opt/VtkMesh/ main.cpp -o pf_martensite_dev -L /opt/VtkMesh/VtkMesh/ -lmeshvtkw",
+            "command_": "g++ -O3 -s -DNDEBUG -march=native -std=c++17 -I /opt/VtkMesh/ main.cpp -o pf_martensite_prod -L /opt/VtkMesh/VtkMesh/ -lmeshvtkw",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        }
+    ]
+}
