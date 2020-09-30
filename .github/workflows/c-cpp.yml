@@ -31,8 +31,10 @@ jobs:
         cd VtkMesh
         g++ -std=c++17 -o vtkmeshw.o -c detail/write_vtk_impl.cpp
         ar r libmeshvtkw.a vtkmeshw.o
+        cd ../../
         sudo mkdir /opt/VtkMesh
         sudo mv ${TMP_WORK_DIR}/VtkMesh /opt/VtkMesh/
+        rm -rf ${TMP_WORK_DIR}
     - name: make
       run: make
     - name: execute_debug
