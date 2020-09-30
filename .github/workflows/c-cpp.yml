@@ -28,7 +28,7 @@ jobs:
         sudo ln -s /opt/eigen-git-mirror/unsupported/ /usr/local/include/unsupported
         cd ${TMP_WORK_DIR}
         git clone https://github.com/sKujirai/VtkMesh.git
-        cd ${TMP_WORK_DIR}/VtkMesh
+        cd VtkMesh
         g++ -std=c++17 -o vtkmeshw.o -c detail/write_vtk_impl.cpp
         ar r libmeshvtkw.a vtkmeshw.o
         sudo mkdir /opt/VtkMesh
