@@ -10,12 +10,12 @@ CXX := g++
 
 ## Compiler option
 CPPFLAGS =
-LDFLAGS =  -L/opt/VtkMesh/VtkMesh/
-LIBS = -lm -pthread -lstdc++fs -lmeshvtkw
+LDFLAGS =
+LIBS = -lm -pthread -lstdc++fs
 DBG_LEVEL := 1
 
 ## Header files
-INCLUDE = -I/usr/local/include -I./ -I/opt/VtkMesh/
+INCLUDE = -I/usr/local/include -I./ -I/opt/vtkmesh/
 
 ## C++ source files
 EXCLUDE := .git% cmake% build% $(CPP_MAIN)

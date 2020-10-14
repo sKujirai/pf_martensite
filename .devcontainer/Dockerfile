@@ -6,6 +6,7 @@ FROM mcr.microsoft.com/vscode/devcontainers/cpp:0-${VARIANT}
 ARG REMOTE_USER="vscode"
 ARG WORK_DIR="/work"
 ARG EIGEN_VERSION=3.3.7
+ARG VTKMESH_VERSION=v1.0.0
 ARG TMP_WORK_DIR="/tmp_work"
 
 # Avoid warnings by switching to noninteractive
@@ -33,14 +34,13 @@ RUN cd ${TMP_WORK_DIR} \
     && ln -s /opt/eigen-git-mirror/Eigen/ /usr/local/include/Eigen \
     && ln -s /opt/eigen-git-mirror/unsupported/ /usr/local/include/unsupported
 
-# VtkMesh
+# vtkmesh
 RUN cd ${TMP_WORK_DIR} \
-    && git clone https://github.com/sKujirai/VtkMesh.git \
-    && cd ${TMP_WORK_DIR}/VtkMesh \
-    && g++ -std=c++17 -o vtkmeshw.o -c detail/write_vtk_impl.cpp \
-    && ar r libmeshvtkw.a vtkmeshw.o \
-    && mkdir /opt/VtkMesh \
-    && mv ${TMP_WORK_DIR}/VtkMesh /opt/VtkMesh/
+    && git clone https://github.com/sKujirai/vtkmesh.git \
+    && cd ${TMP_WORK_DIR}/vtkmesh \
+    && git checkout ${VTKMESH_VERSION} \
+    && mkdir /opt/vtkmesh \
+    && mv ${TMP_WORK_DIR}/vtkmesh /opt/vtkmesh/
 
 RUN rm -rf ${TMP_WORK_DIR}
 

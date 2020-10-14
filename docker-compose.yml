@@ -8,6 +8,7 @@ services:
         - REMOTE_USER=vscode
         - WORK_DIR=${WORK_DIR}
         - EIGEN_VERSION=${EIGEN_VERSION}
+        - VTKMESH_VERSION=${VTKMESH_VERSION}
     volumes:
       - .:${WORK_DIR}
     tty: true

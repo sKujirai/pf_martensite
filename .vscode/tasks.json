@@ -4,8 +4,8 @@
         {
             "label": "Build Main",
             "type": "shell",
-            "command": "g++ -g -O0 -Wall -Wextra -std=c++17 -I /opt/VtkMesh/ pf_martensite.cpp -o pf_martensite_dev -L /opt/VtkMesh/VtkMesh/ -lmeshvtkw",
-            "command_": "g++ -O3 -s -DNDEBUG -march=native -std=c++17 -I /opt/VtkMesh/ pf_martensite.cpp -o pf_martensite_dev -L /opt/VtkMesh/VtkMesh/ -lmeshvtkw",
+            "command": "g++ -g -O0 -Wall -Wextra -std=c++17 -I /opt/vtkmesh/ pf_martensite.cpp -o pf_martensite_dev",
+            "command_": "g++ -O3 -s -DNDEBUG -march=native -std=c++17 -I /opt/vtkmesh/ pf_martensite.cpp -o pf_martensite_dev",
             "group": {
                 "kind": "build",
                 "isDefault": true

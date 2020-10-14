@@ -27,13 +27,12 @@ jobs:
         sudo ln -s /opt/eigen-git-mirror/Eigen/ /usr/local/include/Eigen
         sudo ln -s /opt/eigen-git-mirror/unsupported/ /usr/local/include/unsupported
         cd ${TMP_WORK_DIR}
-        git clone https://github.com/sKujirai/VtkMesh.git
-        cd VtkMesh
-        g++ -std=c++17 -o vtkmeshw.o -c detail/write_vtk_impl.cpp
-        ar r libmeshvtkw.a vtkmeshw.o
+        git clone https://github.com/sKujirai/vtkmesh.git
+        cd vtkmesh
+        git checkout v1.0.0
         cd ../../
-        sudo mkdir /opt/VtkMesh
-        sudo mv ${TMP_WORK_DIR}/VtkMesh /opt/VtkMesh/
+        sudo mkdir /opt/vtkmesh
+        sudo mv ${TMP_WORK_DIR}/vtkmesh /opt/vtkmesh/
         rm -rf ${TMP_WORK_DIR}
     - name: make
       run: make
